@@ -94,3 +94,5 @@ ENV/
 *.mp3
 *.wave
 keys.txt
+keys
+*.txt
