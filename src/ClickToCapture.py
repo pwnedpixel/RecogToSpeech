@@ -1,12 +1,15 @@
 import modules.getNewImageCaption as getC
 import modules.readCaptionAloud as readC
+import modules.azureUpload as azureU
 
-def run():
-    while(1):
-        print("Enter:")
+cam=getC.scv.Camera()
 
-        #user input
-        raw_input()
+while(1):
+    print("Press \"Enter\" to capture")
 
-        #take photo
-        readC.readText(getC.capture())
+    #user input
+    raw_input()
+
+    #take photo
+    readC.readText(getC.capture(cam))
+    azureU.uploadImg()

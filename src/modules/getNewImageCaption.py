@@ -3,13 +3,13 @@ import json as j
 import SimpleCV as scv
 
 
-def capture():
+def capture(cam):
+    print("getting picture/caption...")
     open_file=open('../keys','r')
     file_lines=open_file.readlines()
     key =file_lines[1].strip()
 
     #get photo
-    cam = scv.Camera()
     cam.getImage().save("img.jpg")
 
     #url, headers, file location
@@ -23,5 +23,10 @@ def capture():
     #parse response
     data = j.loads(response.text)
     caption = data['description']['captions'][0]['text']
+
+
+
+    print(caption)
+    print("...done")
 
     return caption
