@@ -21,6 +21,8 @@ def analyse(imageURL):
         if (x==2):
             things+=" and "
 
-    readL.readText("I also see...... "+things)
+    #readL.readText("I also see...... "+things)
     print("...done")
+    return("I also see... "+things)
+
 

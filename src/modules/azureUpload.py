@@ -2,7 +2,7 @@ from azure.storage.file import ContentSettings
 from azure.storage.file import FileService
 from time import gmtime, strftime
 import json as j
-import clarifyImage as cl
+
 
 def uploadImg():
     print("updating index...")
@@ -49,5 +49,4 @@ def uploadImg():
         '../current.txt',
         content_settings=ContentSettings(content_type='text/plain'))
     print("...done")
-
-    cl.analyse("https://recog.file.core.windows.net/recogimages/image"+str(currentIndex)+".jpg?sv=2015-12-11&ss=bqtf&srt=sco&sp=rwdlacup&se=2017-01-22T04:13:20Z&sig=0FcOC1Ge0r9Ms047P7el57ci1OOzU9%2B%2Fb1BzOU9TWn0%3D")
+    return currentIndex
