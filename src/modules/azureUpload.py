@@ -1,6 +1,7 @@
 from azure.storage.file import ContentSettings
 from azure.storage.file import FileService
 from time import gmtime, strftime
+import json as j
 
 def uploadImg():
     print("uploading...")
@@ -17,7 +18,8 @@ def uploadImg():
     #open the index file and get the index value
     open_file = open('../current.txt', 'r')
     file_lines = open_file.readlines()
-    currentIndex = int(file_lines[0].strip())
+    data = j.loads(file_lines[0])
+    currentIndex = data['index']
     open_file.close()
 
     #increase the index
@@ -33,7 +35,7 @@ def uploadImg():
 
     #open index file in write mode, and write new index
     open_file = open('../current.txt', 'w')
-    open_file.writelines(str(currentIndex))
+    open_file.writelines("{\"index\":"+str(currentIndex)+"}")
     open_file.close()
 
     #upload index file back to server
