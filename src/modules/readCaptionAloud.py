@@ -7,7 +7,7 @@ def readText(textToRead):
     print("reading...")
     tts = gTTS(text=textToRead, lang='en')
     tts.save("speech.mp3")
-    print("...done")
+    print("...done talking")
 
     #subprocess.call(["/bin/mv","/tmp/a","/tmp/b"])
-    subprocess.Popen(['mpg123', '-q', "speech.mp3"]).wait()
+    subprocess.Popen(['mpg123', '-q', "speech.mp3"])
