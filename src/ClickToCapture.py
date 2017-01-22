@@ -16,7 +16,14 @@ while(1):
     raw_input()
 
     #take photo
-    p = readC.readText(getC.capture(cam), 'caption')
+    p = readC.readText("I think its "+getC.capture(cam), 'caption')
+    print("readingfirst")
+    secondCaption = getC.capture(cam)
+    while (p.poll() is None):
+        print("waiting")
+        time.sleep(0.25)
+    print("reading second")
+    p = readC.readText(", or "+secondCaption, 'caption')
     currentIndex = azureU.uploadImg()
     clarifaiOut =cl.analyse("https://recog.file.core.windows.net/recogimages/image" + str(currentIndex) + ".jpg?sv=2015-12-11&ss=bfqt&srt=sco&sp=rwdlacup&se=2017-01-25T06:11:11Z&st=2017-01-21T22:11:11Z&spr=https,http&sig=ln6d8cXBF4OiQvdVPj1XhZjcfTF3W7aYFGU623t7nac%3D")
     while (p.poll() is None):

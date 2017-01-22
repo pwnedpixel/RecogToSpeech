@@ -4,6 +4,7 @@ import SimpleCV as scv
 
 
 def capture(cam):
+    caption=""
     print("getting picture/caption...")
     open_file=open('../keys','r')
     file_lines=open_file.readlines()
@@ -11,6 +12,7 @@ def capture(cam):
 
     #get photo
     cam.getImage().save("img.jpg")
+
 
     #url, headers, file location
     url = "https://api.projectoxford.ai/vision/v1.0/analyze?visualFeatures=Description&language=en"
@@ -22,8 +24,7 @@ def capture(cam):
 
     #parse response
     data = j.loads(response.text)
-    caption = data['description']['captions'][0]['text']
-
+    caption += data['description']['captions'][0]['text']
 
 
     print(caption)
